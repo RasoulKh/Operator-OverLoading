@@ -19,14 +19,14 @@ struct Youtubechannel {
     } 
 };
 
-struct MyCollection {
-    list <Youtubechannel> myChannel;
+struct Collection {
+    list <Youtubechannel> Channel;
     
     void operator += (Youtubechannel& channel) {
-        this->myChannel.push_back(channel);
+        this->Channel.push_back(channel);
     }
     void operator -= (Youtubechannel& channel) {
-        this->myChannel.remove(channel);
+        this->Channel.remove(channel);
     }
 };
 
@@ -37,27 +37,24 @@ ostream& operator << (ostream& COUT, Youtubechannel& ytchannel) {
 }
 
 
-ostream& operator << (ostream& COUT, MyCollection& my_collection){
-    for(Youtubechannel ytChannel : my_collection.myChannel)
+ostream& operator << (ostream& COUT, Collection& my_collection){
+    for(Youtubechannel ytChannel : my_collection.Channel)
         COUT << ytChannel << endl;
     
     return COUT;
 
 }
-
+//*********************************//
+//***********   Main   ************//
+//*********************************//
 int main(){
 
-
     Youtubechannel yt1 = Youtubechannel("Rasoul", 2100);
-    Youtubechannel yt2 = Youtubechannel("Saldina", 7100);
+    Youtubechannel yt2 = Youtubechannel("John", 7100);
     
- //   cout << yt1 << yt2; //    operator<<(cout, yt1);
-
-    MyCollection myCollection;
+    Collection myCollection;
     myCollection += yt1;
     myCollection += yt2;
-
-    //myCollection -= yt2;
 
     cout << myCollection;
 
